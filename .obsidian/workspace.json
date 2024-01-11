@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BabyHttp.md",
-                "mode": "source",
+                "file": "Web/BabyHttp.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -29,12 +29,8 @@
             "id": "ca6ae8b21cc6c191",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BabyHttp.md",
-                "mode": "preview",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -87,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f585490143aaa00e",
@@ -104,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "BabyHttp.md",
+                "file": "Web/BabyHttp.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "BabyHttp.md",
+                "file": "Web/BabyHttp.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "BabyHttp.md"
+                "file": "Web/BabyHttp.md"
               }
             }
           }
