@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "28a0dca19abfce8a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "1991c90a41faf22c",
             "type": "leaf",
             "state": {
@@ -31,20 +19,19 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "dc1d217b9b59f5eb",
+        "id": "c8c4cfcc14826a85",
         "type": "tabs",
         "children": [
           {
-            "id": "142dfe423a00ab18",
+            "id": "ca6ae8b21cc6c191",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "BabyHttp.md",
                 "mode": "preview",
                 "source": false
               }
@@ -100,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f585490143aaa00e",
@@ -164,8 +152,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -179,8 +166,10 @@
   },
   "active": "1991c90a41faf22c",
   "lastOpenFiles": [
-    "README.md",
+    "Pasted image 20240111155058.png",
+    "Pasted image 20240111152901.png",
     "BabyHttp.md",
+    "README.md",
     "Web"
   ]
 }
