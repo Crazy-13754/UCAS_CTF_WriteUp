@@ -1,8 +1,8 @@
 让人不知所措的众多题目之一。
-在 Burp Suite 中通过内嵌浏览器访问，发现相应中有 Password 。
-![[Pasted image 20240111152901.png]]
+在 Burp Suite 中通过内嵌浏览器访问，发现相应中有 Password。
+![alt Brup](BabyHttp1.png "Brup Suite")
 取解码后花括号中的内容提交，发现会有提示。
-![[Pasted image 20240111155058.png]]
+![alt 提示](BabyHttp2.png "提示")
 随后，你就明白要干什么并写脚本来变成一个“快人”。
 
 ```python
