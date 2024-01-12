@@ -44,7 +44,7 @@ ssize_t sub_400acd()
   puts("Who are you?");
   for ( i = 0; ; ++i )
   {
-    result = read(0, buf, 1uLL);//一次从缓冲区读一个字节
+    result = read(0, buf, 1uLL);                //一次从缓冲区读一个字节
     if ( result != 1 )
       break;
     result = (unsigned __int8)buf[0];
@@ -61,7 +61,7 @@ ssize_t sub_400acd()
 ```c
 int sub_40067d()
 {
-  return puts(s);//s即为刚刚读取flag的字符串地址
+  return puts(s);                               //s即为刚刚读取flag的字符串地址
 }
 ```
 现在可以分析一下漏洞函数 `sub_400acd` 的栈了
