@@ -29,3 +29,22 @@ if(isset($a)){
 不过这些都不重要。不管你是不是（像 RickT 或是 ❄️の🌸 这种神仙一样）自己做出来的，是不是看完题目一脸懵，现在更应该记住的是以后做 CTF 题，需要的是不断的百度和尝试。哪里不会百度一下，还是不会就去问问谷哥一直到问明白为止。
 
 嗯，对，就是**不要畏难就好了**
+
+以下是逐行分析，如果你需要的话
+```php
+<?php
+header("Content-type:text/html;charset=utf-8"); //进行一个定义
+error_reporting(0); //不报告错误
+include 'flag.php'; //include flag文件
+$b='ssAEDsssss';    //定义变量b
+extract($_GET);     //extract
+if(isset($a)){      //判断 a 是否被定义
+    $c=trim(file_get_contents($b)); //c 为以 b 为名字的文件的内容
+    if($a==$c){
+        echo $myFlag; //让程序大喊 "$myFlag"!
+    }else{
+        echo'继续努力，相信flag离你不远了';
+    }
+}
+?>
+```
