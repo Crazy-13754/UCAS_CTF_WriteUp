@@ -24,12 +24,40 @@ public class HelloWorld{ //本文件应当命名为 HelloWorld.java
 
 4. static final用来修饰成员变量和成员方法，可简单理解为“全局常量”。对于变量，表示一旦给值就不可修改；对于方法，表示不可覆盖。
 
-————————————————
-
-版权声明：本文为CSDN博主「weixin_39915210」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/weixin_39915210/article/details/114208140
 
 静态和动态调用的时候有奇怪的问题，虽然这个看起来很明白，但我还是不太明白……
 
 # 关于题目
-这八个题高度相似，加密原理
+这八个题高度相似，加密原理均为为字符替换或移位。通常做法为写一个解密函数或者直接用题目的函数得答案。手写也不是不行。
+
+可拓展的知识大抵是恩尼格玛之类。丢几个有点意思的链接
+
+有关古典密码安全性讨论 https://crypto.stackexchange.com/questions/13150/how-cryptographically-secure-was-the-original-ww2-enigma-machine-from-a-modern
+
+以及对恩尼格的历史介绍 https://www.zhihu.com/question/28397034
+
+第八题看起来格外让人容易懵。在这贴一下。
+
+```java
+public char switchBits(char c, int p1, int p2) {
+    /*
+    * Move the bit in position p1 to position p2, and move the bit
+    * that was in position p2 to position p1. Precondition: p1 < p2
+    */
+    char mask1 = (char) (1 << p1); //"<<"是左移操作。这样生成了一个位置 p1 是 1，而其余部分是 0 的“掩码”。
+    char mask2 = (char) (1 << p2); //同上
+    /* char mask3 = (char)(1<<p1<<p2); mask1++; mask1--; */
+    char bit1 = (char) (c & mask1); //将 p1 部分的 0 或 1 “提取出来”
+    char bit2 = (char) (c & mask2); // 同上
+    /*
+    * System.out.println("bit1 " + Integer.toBinaryString(bit1));
+    * System.out.println("bit2 " + Integer.toBinaryString(bit2));
+    */
+    //并没能看懂原题的这个释义在干什么
+    char rest = (char) (c & ~(mask1 | mask2)); // 对两个掩码取并后再通过“~”取反，从而清除了 c 中的相应的位置 
+    char shift = (char) (p2 - p1); //计算偏移
+    char result = (char) ((bit1 << shift) | (bit2 >> shift) | rest); //换位置
+    return result; //其实就是换位置的函数，不过写的很复杂。再通过前面函数调用的多次取换，还是古典密码的范畴。
+}
+```
