@@ -150,7 +150,7 @@ Input the name of the professor that will be scored
 aaa
 aaa
 Input the score:
-134517494
+134517494 //没开随机化，这是win的地址
 Score Given: 134517494
 Input the name of a student
 bbb
