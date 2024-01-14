@@ -1,18 +1,103 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{article}  % 设置纸张大小
 \usepackage[margin=1in]{geometry} % 设置边距，符合Word设定
-\usepackage{ctex}
-\usepackage{lipsum}
+\usepackage{ctex} % 对中文支持的宏包
+\usepackage{cite} % 引用
+\usepackage{graphicx} % 插入图片所需要的宏包
+\usepackage{lipsum} % 生成虚拟文本（Lorem Ipsum）的宏包，测试或者占位用。
+\usepackage[hidelinks]{hyperref} % 取消超链接颜色，并且目录有超链接
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}} % 定义上标引用，套两层会让上标更“上”一点
 \title{\heiti\zihao{2} RSA}
 \author{\songti Crazy\_13754}
 \date{\today}
+
 \begin{document}
     \maketitle
-% \begin{abstract}
-%     \lipsum[2]
-% \end{abstract}
-%\tableofcontents
+\begin{abstract}
+    写了些关于rsa的东西
+\end{abstract}
+\tableofcontents
+\section[引言]{引言}
+
+网上找到的博客质量参差不齐。实际上，写这篇的时候发现有论文写的很清楚了\upcite{chenchuanbo2006rsa}。此外维基百科也写的非常好，本来把它们丢上来就可以了。你问我为什么还要写这篇文章？请看这个图 \ref{fig:rsa1}：
+
+\begin{figure}[htbp]
+    % [h]当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩的页面不够，这一参数将不起作用。
+    % [t]顶部。将图形放置在页面的顶部。
+    % [b]底部。将图形放置在页面的底部。
+    % [p]浮动页。将图形放置在一只允许有浮动对象的页面上。
+    \centering
+    \includegraphics[width=1.77in,height=1.75in]{contents/rsa1.jpg}
+    \caption{This is an inserted jpg graphic}
+    \label{fig:rsa1}
+    \end{figure}
+
+如果你还是没有明白我想说什么，请再看看这个表 \ref{table:1}：
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ c c c } 
+        \hline
+        对写奇奇怪怪东西的看法 & 可以理解 & 不可理喻 \\
+        \hline
+        支持 & 0.1\% & 0.0\% \\ 
+        不支持 & 0.2\% & 99.7\% \\ 
+        \hline
+       \end{tabular}
+    \caption{Table to test captions and labels}
+    \label{table:1}
+    \end{table}
+
+如果（虽然几乎是当然的）你还是不理解，那就看看这些东西:
+
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{contents/rsa2.jpg}
+		\caption{tupian1}
+		\label{tupian1}%文中引用该图片代号
+	\end{minipage}
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{contents/rsa3.jpg}
+		\caption{tupian2}
+		\label{tupian2}%文中引用该图片代号
+	\end{minipage}
+	%\qquad
+	%让图片换行，
+	
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{contents/rsa4.jpg}
+		\caption{tupian3}
+		\label{tupian3}%文中引用该图片代号
+	\end{minipage}
+	\begin{minipage}{0.49\linewidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{contents/rsa5.jpg}
+		\caption{tupian4}
+		\label{tupian4}%文中引用该图片代号
+	\end{minipage}
+\end{figure}
+
+\clearpage
+这显然把事情弄得更糟。好吧，只是我在学\LaTeX，而你浪费了不少时间来看刚刚的内容。而且你接下来看到的东西也会几乎全是复制的。
+
+公钥密码系统的观点是由Diffie和Hell man在1796年首次提出的,它是密码学发展史上具有里程碑意义的一件大事。与传统对称密码体制(即加、解密密钥相同)相比,
+公钥系统使用两个密钥：加密密钥可以公开,称为公钥；解密密钥保密,为私钥。产生公钥体制的内在动力有两个：
+
+(1) 传统对称体制下密钥的存储和分配问题；
+
+(2) 消息鉴别问题,就是指用来检验消息来自于声称的来源并且没有被修改。
+
+公钥体制的基础是陷门(单向函数),即某种实际处理过程的不可逆性。目前的公钥思想基于两种：一是依赖于大数的因数分解的困难性；二是依赖于求模p离散对数的困难性。RSA密码算法就是基于大数的因数分解的困难性。
+
+
 \section{过程}
-加密解密的过程，写写。
+
 \section[awa]{证明}
 rsa的证明。
+
+\bibliography{contents/rsaref} % 导入bib
+\bibliographystyle{plain} % 参考文献排版风格
 \end{document}
