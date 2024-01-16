@@ -47,5 +47,9 @@
 .idea/
 *.bak
 
+#files I don't know what they are
+*.fls
+*.fdb_latexmk
+
 #obsidian files
 .obsidian/
