@@ -13,9 +13,9 @@
 \date{\today}
 
 \begin{document}
-    \maketitle
+\maketitle
 \begin{abstract}
-    写了些关于rsa的东西
+	写了些关于rsa的东西
 \end{abstract}
 \tableofcontents
 \section[引言]{引言}
@@ -23,31 +23,31 @@
 实际上，写这篇的时候发现有论文写的很清楚了\upcite{chenchuanbo2006rsa}。此外，网上各种博客内容已经一应俱全，本来把它们丢上来就可以了。你问我为什么还要写这篇文章？请看这个图 \ref{fig:rsa1}：
 
 \begin{figure}[htbp]
-    % [h]当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩的页面不够，这一参数将不起作用。
-    % [t]顶部。将图形放置在页面的顶部。
-    % [b]底部。将图形放置在页面的底部。
-    % [p]浮动页。将图形放置在一只允许有浮动对象的页面上。
-    \centering
-    \includegraphics[width=1.77in,height=1.75in]{contents/rsa1.jpg}
-    \caption{This is an inserted jpg graphic}
-    \label{fig:rsa1}
-    \end{figure}
+	% [h]当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩的页面不够，这一参数将不起作用。
+	% [t]顶部。将图形放置在页面的顶部。
+	% [b]底部。将图形放置在页面的底部。
+	% [p]浮动页。将图形放置在一只允许有浮动对象的页面上。
+	\centering
+	\includegraphics[width=1.77in,height=1.75in]{contents/rsa1.jpg}
+	\caption{This is an inserted jpg graphic}
+	\label{fig:rsa1}
+\end{figure}
 
 如果你还是没有明白我想说什么，请再看看这个表 \ref{table:1}：
 
 \begin{table}[h!]
-    \centering
-    \begin{tabular}{ c c c } 
-        \hline
-        对写奇奇怪怪东西的看法 & 可以理解 & 不可理喻 \\
-        \hline
-        支持 & 0.1\% & 0.0\% \\ 
-        不支持 & 0.2\% & 99.7\% \\ 
-        \hline
-       \end{tabular}
-    \caption{Table to test captions and labels}
-    \label{table:1}
-    \end{table}
+	\centering
+	\begin{tabular}{ c c c }
+		\hline
+		对写奇奇怪怪东西的看法 & 可以理解  & 不可理喻   \\
+		\hline
+		支持          & 0.1\% & 0.0\%  \\
+		不支持         & 0.2\% & 99.7\% \\
+		\hline
+	\end{tabular}
+	\caption{Table to test captions and labels}
+	\label{table:1}
+\end{table}
 
 如果（虽然几乎是当然的）你还是不理解，那就看看这些东西:
 
@@ -67,7 +67,7 @@
 	\end{minipage}
 	%\qquad
 	%让图片换行，
-	
+
 	\begin{minipage}{0.49\linewidth}
 		\centering
 		\includegraphics[width=0.9\linewidth]{contents/rsa4.jpg}
@@ -94,7 +94,10 @@
 
 公钥体制的基础是陷门（单向函数）,即某种实际处理过程的不可逆性。目前的公钥思想基于两种：一是依赖于大数的因数分解的困难性；二是依赖于求模p离散对数的困难性。RSA密码算法就是基于大数的因数分解的困难性。
 
-RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特(Ron Rivest)、阿迪·萨莫尔(Adi Shamir)和伦纳德·阿德曼(Leonard Adleman)在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯(Clifford Cocks)在一个内部文件中提出了一个与之等效的算法，但该算法被列入机密，直到1997年才得到公开。
+RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特(Ron Rivest)、阿迪·萨莫尔(Adi
+Shamir)和伦纳德·阿德曼(Leonard Adleman)在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA
+就是他们三人姓氏开头字母拼在一起组成的。1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯(Clifford
+Cocks)在一个内部文件中提出了一个与之等效的算法，但该算法被列入机密，直到1997年才得到公开。
 
 \href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
 
@@ -105,12 +108,12 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 \[
 	\varphi(n)=\left\{
 	\begin{aligned}
-		&1, &n = 1\\
-		&p^k (1 - \frac{1}{p} ), &n = p^k, \text{$p$为素数，$k \in \mathbb{Z\textsuperscript{*}}$}\\
-        &n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_r}), &n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r},\text{符号同上理}
+		 & 1,                                                           & n = 1                                                        \\
+		 & p^k (1 - \frac{1}{p} ),                                      & n = p^k, \text{$p$为素数，$k \in \mathbb{Z\textsuperscript{*}}$} \\
+		 & n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_r}), & n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r},\text{符号同上理}
 	\end{aligned}
 	\right.
-    \]
+\]
 
 $n$一定属于以上某条件，因为大于1的正整数都可以写成一系列质数的积：若$n$是质数，则显然成立；若$n$不是质数，那它一定是个合数，用归纳法可以证明。
 
@@ -123,14 +126,14 @@ $n$一定属于以上某条件，因为大于1的正整数都可以写成一系�
 
 以下是算法描述：
 \begin{itemize}
-    \item 取两个非常大的素数$p$和$q$。
-    \item 令$N = p \cdot q$，$\varphi(N) = (p - 1) \cdot (q - 1)$。
-    \item 找到一个素数$e < \varphi(N)$，且要求$e$与$\varphi(N)$互素，即有$gcd(e, \varphi(N)) = 1$。 % 先找d会怎么样，e不是素数会怎么样
-    \item 计算$e$在模$\varphi(N)$上的逆元$d$，即求$d$满足$e \cdot d \bmod \varphi(N) = 1$。
-    \item $(N, e)$作为公钥(pk, Public key)发给对方，$(N, d)$作为私钥(pt, Private key)保存。
-    \item 对方接受公钥后，将原文(pt, Plaintext)通过预先设定好的方式转换成数字，记为$p$，则密文(ct, Ciphertext)满足$ct = p ^ e \bmod N$（也就是$ct \equiv p ^ e (\bmod N)$），对方将密文发回。
-    \item 接收密文，并使用私钥解密：$p = ct ^ d \bmod N$，也就是$p \equiv ct ^ d (\bmod N)$。
-\end{itemize} 
+	\item 取两个非常大的素数$p$和$q$。
+	\item 令$N = p \cdot q$，$\varphi(N) = (p - 1) \cdot (q - 1)$。
+	\item 找到一个素数$e < \varphi(N)$，且要求$e$与$\varphi(N)$互素，即有$gcd(e, \varphi(N)) = 1$。 % 先找d会怎么样，e不是素数会怎么样
+	\item 计算$e$在模$\varphi(N)$上的逆元$d$，即求$d$满足$e \cdot d \bmod \varphi(N) = 1$。
+	\item $(N, e)$作为公钥(pk, Public key)发给对方，$(N, d)$作为私钥(pt, Private key)保存。
+	\item 对方接受公钥后，将原文(pt, Plaintext)通过预先设定好的方式转换成数字，记为$p$，则密文(ct, Ciphertext)满足$ct = p ^ e \bmod N$（也就是$ct \equiv p ^ e (\bmod N)$），对方将密文发回。
+	\item 接收密文，并使用私钥解密：$p = ct ^ d \bmod N$，也就是$p \equiv ct ^ d (\bmod N)$。
+\end{itemize}
 
 \bibliography{contents/rsaref} % 导入bib
 \bibliographystyle{plain} % 参考文献排版风格
