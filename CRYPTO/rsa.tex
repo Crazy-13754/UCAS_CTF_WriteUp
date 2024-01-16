@@ -2,6 +2,8 @@
 \usepackage[margin=1in]{geometry} % 设置边距，符合Word设定
 \usepackage{ctex} % 对中文支持的宏包
 \usepackage{cite} % 引用
+\usepackage{amsfonts} % 输入数集符号
+\usepackage{amsmath} % 数学支持
 \usepackage{graphicx} % 插入图片所需要的宏包
 \usepackage{lipsum} % 生成虚拟文本（Lorem Ipsum）的宏包，测试或者占位用。
 \usepackage[colorlinks=true]{hyperref} % [hidelinks]取消超链接颜色，并且目录有超链接。为了避免宏包冲突，将这个包放在最后调用。
@@ -18,7 +20,7 @@
 \tableofcontents
 \section[引言]{引言}
 
-网上找到的博客质量参差不齐。实际上，写这篇的时候发现有论文写的很清楚了\upcite{chenchuanbo2006rsa}。此外维基百科也写的非常好，本来把它们丢上来就可以了。你问我为什么还要写这篇文章？请看这个图 \ref{fig:rsa1}：
+实际上，写这篇的时候发现有论文写的很清楚了\upcite{chenchuanbo2006rsa}。此外，网上各种博客内容已经一应俱全，本来把它们丢上来就可以了。你问我为什么还要写这篇文章？请看这个图 \ref{fig:rsa1}：
 
 \begin{figure}[htbp]
     % [h]当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩的页面不够，这一参数将不起作用。
@@ -81,7 +83,7 @@
 \end{figure}
 
 \clearpage
-这显然把事情弄得更糟。好吧，只是我在学\LaTeX，而你---我的朋友---浪费了你生命中的重要时间来看刚刚的内容。而且你接下来看到的东西也都可以找到。不知道这篇文章所帮助你减少的在浏览器上搜索的时间能否弥补它所浪费的时间。
+这显然把事情弄得更糟。好吧，只是我在学\LaTeX，而你---我的朋友---浪费了你生命中的宝贵时间来看刚刚的内容，而且你接下来看到的东西也都可以在网上找到。不知道这篇文章所帮助你减少的在浏览器上搜索的时间能否弥补它所浪费的时间。或许，你需要的是及时止损，现在就放弃阅读？
 
 公钥密码系统的观点是由Diffie和Hell man在1796年首次提出的,它是密码学发展史上具有里程碑意义的一件大事。与传统对称密码体制（即加、解密密钥相同）相比,
 公钥系统使用两个密钥：加密密钥可以公开,称为公钥；解密密钥保密,为私钥。产生公钥体制的内在动力有两个：
@@ -94,8 +96,29 @@
 
 RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特(Ron Rivest)、阿迪·萨莫尔(Adi Shamir)和伦纳德·阿德曼(Leonard Adleman)在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯(Clifford Cocks)在一个内部文件中提出了一个与之等效的算法，但该算法被列入机密，直到1997年才得到公开。
 
-\href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法。对于RSA的攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
+\href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
 
+\section[理论基础]{数学基础}
+\subsection[欧拉定理]{欧拉函数与欧拉定理}
+对于$n \in \mathbb{Z\textsuperscript{*}}$，欧拉函数$\varphi(n)$表示小于等于$n$的正整数中与其互质的数字个数。其可表示为：
+
+\[
+	\varphi(n)=\left\{
+	\begin{aligned}
+		&1, &n = 1\\
+		&p^k (1 - \frac{1}{p} ), &n = p^k, \text{$p$为素数，$k \in \mathbb{Z\textsuperscript{*}}$}\\
+        &n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_r}), &n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r},\text{符号同上理}
+	\end{aligned}
+	\right.
+    \]
+
+$n$一定属于以上某条件，因为大于1的正整数都可以写成一系列质数的积：若$n$是质数，则显然成立；若$n$不是质数，那它一定是个合数，用归纳法可以证明。
+
+当$n = p^k$时，不包含$p$的数才能与其互质。而包含$p$的数字有$p,2\cdot p,\ldots ,p^{k-1}\cdot p$共$p^{k-1}$个，因此此时$\varphi(n) = p^k - p^{k-1} = p^k (1 - \frac{1}{p} )$。
+
+当$n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r}$时，先考虑$n = p_{1}^{k_1}p_{2}^{k_2}$的情况。
+
+而欧拉定理指的则是，如果两个正整数$a$和$n$互质，则$n$的欧拉函数$\varphi(n)$可以让下面的等式成立:
 \section[算法描述]{加密与解密过程}
 
 以下是算法描述：
@@ -107,10 +130,7 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
     \item $(N, e)$作为公钥(pk, Public key)发给对方，$(N, d)$作为私钥(pt, Private key)保存。
     \item 对方接受公钥后，将原文(pt, Plaintext)通过预先设定好的方式转换成数字，记为$p$，则密文(ct, Ciphertext)满足$ct = p ^ e \bmod N$（也就是$ct \equiv p ^ e (\bmod N)$），对方将密文发回。
     \item 接收密文，并使用私钥解密：$p = ct ^ d \bmod N$，也就是$p \equiv ct ^ d (\bmod N)$。
-\end{itemize}
-
-\section{算法理论基础}
-
+\end{itemize} 
 
 \bibliography{contents/rsaref} % 导入bib
 \bibliographystyle{plain} % 参考文献排版风格
