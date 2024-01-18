@@ -102,7 +102,8 @@ Cocks)在一个内部文件中提出了一个与之等效的算法，但该算�
 \href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
 
 \section[理论基础]{数学基础}
-\subsection[欧拉定理]{欧拉函数与欧拉定理}
+\subsection[欧拉函数]{欧拉函数}
+
 对于$n \in \mathbb{Z\textsuperscript{*}}$，欧拉函数$\varphi(n)$表示小于等于$n$的正整数中与其互质的数字个数。其可表示为：
 
 \[
@@ -119,9 +120,18 @@ $n$一定属于以上某条件，因为大于1的正整数都可以写成一系�
 
 当$n = p^k$时，不包含$p$的数才能与其互质。而包含$p$的数字有$p,2\cdot p,\ldots ,p^{k-1}\cdot p$共$p^{k-1}$个，因此此时$\varphi(n) = p^k - p^{k-1} = p^k (1 - \frac{1}{p} )$。
 
-当$n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r}$时，先考虑$n = p_{1}^{k_1}p_{2}^{k_2}$的情况。此时，我们有：
+当$n = p_{1}^{k_1}p_{2}^{k_2}\cdots p_{r}^{k_r}$时，可以通过两种方式证明该式。
+
+\begin{minipage}[t]{\linewidth}
+
+\qquad 先考虑$n = p_{1}^{k_1}p_{2}^{k_2}$的情况。此时，我们可以通过两种方式证明$\varphi(n)=\varphi(p_{1}^{k_1}p_{2}^{k_2})=\varphi(p_{1}^{k_1})\varphi(p_{2}^{k_2})$。
+	\end{minipage}
+
+
+\subsection[欧拉定理]{欧拉定理}
 
 而欧拉定理指的则是，如果两个正整数$a$和$n$互质，则$n$的欧拉函数$\varphi(n)$可以让下面的等式成立:
+
 \section[算法描述]{加密与解密过程}
 
 以下是算法描述：
