@@ -126,4 +126,6 @@ unsigned int sub_80485CD()
          ret_address
          puts_got
 ```
+这样 `put` 的真正地址（即got表中的值）就作为put的参数被打印出来
+
 
