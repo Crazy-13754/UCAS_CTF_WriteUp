@@ -189,7 +189,7 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 \subsection{模的逆}
 
-若 $a \cdot x \equiv 1 (\bmod y)$，则 $a, x$ 互为模 $y$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。形如 $a \cdot x + b \cdot y = d$ 的方程被称为裴蜀（Bezout）等式或贝祖等式。$x, y$已知，则此等式存在整数解$a, b \iff \gcd(x, y) \mid d$。 % ，即上式中的 $a$ 有解当且仅当$x, y$互素。
+若 $a \cdot x \equiv 1 (\bmod y)$，则 $a, x$ 互为模 $y$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。形如 $a \cdot x + b \cdot y = d$ 的方程被称为裴蜀(Bezout)等式或贝祖等式。$x, y$已知，则此等式存在整数解$a, b \iff \gcd(x, y) \mid d$。 即上式中的 $a,b$ 有解当且仅当$x, y$互素。
 
 % 先证上述定理。当 $a \cdot x + b \cdot y$ 时，显然有 $\frac{a \cdot x}{\gcd(x, y)} + \frac{b \cdot y}{\gcd(x, y)}$ 恒为整数，可得 $\gcd(x, y) \mid d$。当 $\gcd(x, y) \mid d$ 时，因为 $\gcd(\frac{x}{\gcd(x, y)},\frac{y}{\gcd(x, y)}) = 1$ ，即证 $x, y$ 互素时， $a \cdot x + b \cdot y = k$恒有解。
 
