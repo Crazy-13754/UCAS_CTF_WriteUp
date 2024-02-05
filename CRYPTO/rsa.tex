@@ -181,7 +181,11 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 下证明算法正确性。设$a > b, c_1 = \gcd(a, b), c_2 = \gcd(b, a \bmod b)$。此时，$c_2 \mid b$ 且 $c_2 \mid (a \bmod b)$，又因为$a = k_1b + (a \bmod b)$，则$c_2 \mid a$，因此 $c_2$ 为 $a, b$的因数，$c_2$ 因而为 $c_1$的因数。同理，$c_1$ 为 $c_2$的因数，即有$c_1 = c_2$。不断进行此操作，即可得到两数的最大公因数。
 
-\subsection{}
+若$a < b$，则 $\gcd(a, b) = \gcd(b, a)$，同上。
+
+\subsection{拓展欧几里德算法}
+
+
 
 \subsection{模的逆}
 
