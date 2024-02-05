@@ -230,7 +230,8 @@ $n$一定属于以上某条件，可用归纳法证明：
 
 先介绍中国剩余定理。它旨在解决形如下式的问题：
 
-\[
+\begin{equation}
+    \label{中国剩余定理问题方程组}
 	\begin{cases}
 		x \equiv a_1(\bmod n_1) \\
 		x \equiv a_2(\bmod n_2) \\
@@ -238,7 +239,7 @@ $n$一定属于以上某条件，可用归纳法证明：
 		x \equiv a_r(\bmod n_r) \\
 	\end{cases}
     (\forall i, j \leqslant r, \gcd(n_i, n_j) = 1)
-\]
+\end{equation}
 
 这个定理推导基于以下性质：
 
@@ -261,11 +262,58 @@ $n$一定属于以上某条件，可用归纳法证明：
 	\end{cases}
 \]
 
-此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$k_i$为$n_1,n_2, \cdots, n_{i-1}, n_{i+1}, \cdots, n_r$的乘积，根据性质 \ref{CRT性质找数} 则有$x_i'$满足$k_i \cdot x_i' \equiv 1 (\bmod n_i)$，即求 $k_i$ 模 $n_i$ 的逆\upcite{中国剩余定理(CRT)}。
+此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$N=n_1 \cdot n_2 \cdots n_r$，则根据性质 \ref{CRT性质找数} 则有$x_i'$满足$x_i = \frac{N}{n_i} \cdot q_i$，且$\frac{N}{n_i} \cdot q_i \equiv 1 (\bmod n_i)$，即 $q_i$ 为求 $\frac{N}{n_i}$ 模 $n_i$ 的逆，记为$\operatorname{invert}(\frac{N}{n_i}, n_i)$\upcite{中国剩余定理(CRT)}。此时，方程已经被我们化为如下形式：
 
+\[
+	\begin{cases}
+		x_1 = a_1\frac{N}{n_1} \cdot \operatorname{invert}(\frac{N}{n_1}, n_1)\\
+        x_2 = a_2\frac{N}{n_2} \cdot \operatorname{invert}(\frac{N}{n_2}, n_2)\\
+        \vdots                                      \\
+        x_i = a_i\frac{N}{n_i} \cdot \operatorname{invert}(\frac{N}{n_i}, n_i) \\
+        \vdots                                      \\
+        x_r = a_r\frac{N}{n_r} \cdot \operatorname{invert}(\frac{N}{n_r}, n_r)\\
+        x \equiv \sum \limits_{i=1}^{r} x_i(\bmod n)
+	\end{cases}
+\]
 
+这就给出了方程 \ref{中国剩余定理问题方程组} 的解。若$\exists i, j$，使$\gcd(n_i, n_j) > 1$，则可通过除其公因子“合并”方程。关于逆元的求法可参考\href{https://blog.csdn.net/xiaoming_p/article/details/79644386}{这个链接}。
 
-不是很能看懂。直接贴个\href{https://zhuanlan.zhihu.com/p/600282116}{链接}。（大概理解意思，但是不理解“第二种证明方法有问题”，显然是没真明白）
+下面将用中国剩余定理证明欧拉公式。
+
+设$A = \{ x \vert \gcd(x, m) = 1, x \leqslant m \}, B = \{ y \vert \gcd(y, n) = 1, y \leqslant n \}, C = \{ z \vert \gcd(z, mn) = 1, z \leqslant mn \}$，则 $\varphi(m) = \left\lvert A\right\rvert,\varphi(n) = \left\lvert B\right\rvert,\varphi(mn) = \left\lvert C\right\rvert$。
+
+$\because \gcd(m, n) = 1s$
+
+$\therefore A \bigcap B = \{ 1 \}$
+
+若$mn \bmod N = 0$，即$N \in C$，令 $N = k_1m + p = k_2n + q$。
+
+$\because \gcd(N, mn) = 1$
+
+$\therefore \gcd(N, m) = \gcd(N, n) = 1$
+
+$\therefore \gcd(k_1m + p, m) = gcd(p, m) = 1, \gcd(k_2n + q, n) = gcd(q, n) = 1,$
+
+$\therefore \gcd(p, m) = \gcd(q, n) = 1$
+
+由中国剩余定理，方程组
+
+\[
+    \begin{cases}
+        N \equiv p(\bmod m)\\
+        N \equiv q(\bmod n)\\
+    \end{cases}
+\]
+
+有通解$N = kmn + pnt_1 + qnt_2$，其中$nt_1 \equiv 1(\bmod m), mt_2 \equiv 1 (\bmod n)$。
+
+因此，对于每一个二元组$(p, q)$，都有唯一的 $N$ 与之对应 $\Rightarrow A \times B$ 与 $C$ 构成双射。
+
+根据乘法原理，二元组$(p, q)$的数量为$\varphi(n) \varphi(m)$，而与 $mn$ 互质的数 $N$ 的数量为 $\varphi(mn)$。
+
+$\therefore \varphi(mn) = \varphi(m) \varphi(n)$
+
+$\therefore \forall n \in \mathbb{Z\textsuperscript{*}}, n = p_1^{k_1}p_2^{k_2} \cdots p_n^{k_n}, \varphi(n) = p_1^{k_1}(1 - \frac{1}{p_1})p_2^{k_2}(1 - \frac{1}{p_2})\cdots p_n^{k_n}(1 - \frac{1}{p_n})=p_1^{k_1}p_2^{k_2}\cdots p_n^{k_n}(1 - \frac{1}{p_1})(1 - \frac{1}{p_2})\cdots (1 - \frac{1}{p_n})$。
 
 \subsection{欧拉定理}
 
