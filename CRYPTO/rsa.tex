@@ -185,7 +185,7 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 \subsection{拓展欧几里德算法}
 
-
+% https://zhuanlan.zhihu.com/p/100567253
 
 \subsection{模的逆}
 
@@ -234,9 +234,10 @@ $n$一定属于以上某条件，可用归纳法证明：
 	\begin{cases}
 		x \equiv a_1(\bmod n_1) \\
 		x \equiv a_2(\bmod n_2) \\
-		\cdots           \\
+		\cdots                  \\
 		x \equiv a_r(\bmod n_r) \\
 	\end{cases}
+    (\forall i, j \leqslant r, \gcd(n_i, n_j) = 1)
 \]
 
 这个定理推导基于以下性质：
@@ -260,7 +261,9 @@ $n$一定属于以上某条件，可用归纳法证明：
 	\end{cases}
 \]
 
-此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$k_i$为$n_1,n_2, \cdots, n_{i-1}, n_{i+1}, \cdots, n_r$的公因子乘积，根据性质 \ref{CRT性质找数} 则有$x_i'$满足$k_i \cdot x_i' \equiv 1 (\bmod n_i)$，即求 $k_i$ 模 $n_i$ 的逆\upcite{中国剩余定理(CRT)}。
+此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$k_i$为$n_1,n_2, \cdots, n_{i-1}, n_{i+1}, \cdots, n_r$的乘积，根据性质 \ref{CRT性质找数} 则有$x_i'$满足$k_i \cdot x_i' \equiv 1 (\bmod n_i)$，即求 $k_i$ 模 $n_i$ 的逆\upcite{中国剩余定理(CRT)}。
+
+
 
 不是很能看懂。直接贴个\href{https://zhuanlan.zhihu.com/p/600282116}{链接}。（大概理解意思，但是不理解“第二种证明方法有问题”，显然是没真明白）
 
