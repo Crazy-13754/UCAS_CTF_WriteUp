@@ -7,6 +7,9 @@
 \usepackage{graphicx} % 插入图片所需要的宏包
 \usepackage{lipsum} % 生成虚拟文本（Lorem Ipsum）的宏包，测试或者占位用。
 \usepackage{amssymb} % 为了得到漂亮的\geqslant \leqslant 使用的包
+\usepackage{url} % bibtex中引用herf
+\usepackage{listings} % 添加程序代码
+\usepackage{xcolor} % 加以渲染代码颜色
 \usepackage[colorlinks=true]{hyperref} % [hidelinks]取消超链接颜色，并且目录有超链接。为了避免宏包冲突，将这个包放在最后调用。
 
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
@@ -14,6 +17,43 @@
 \title{\heiti\zihao{2} RSA}
 \author{\songti Crazy\_13754}
 \date{\today}
+
+\lstset{
+    basicstyle       = \sffamily, % 基本代码风格
+    keywordstyle     = \bfseries, % 关键字风格
+    commentstyle     = \rmfamily\itshape, % 注释的风格，斜体
+    stringstyle      = \ttfamily, % 字符串风格
+    flexiblecolumns, % 别问为什么，加上这个
+    numbers          = left, % 行号的位置在左边
+    showspaces       = false, % 是否显示空格，显示了有点乱，所以不显示了
+    numberstyle      = \zihao{-5}\ttfamily, % 行号的样式，小五号，tt等宽字体
+    showstringspaces = false,
+    captionpos       = t, % 这段代码的名字所呈现的位置，t指的是top上面
+    frame            = lrtb, % 显示边框
+    frame            = shadowbox, % 阴影效果
+}
+
+\lstdefinestyle{cpp}{
+    language         = C++,
+    keywordstyle     = \color{blue!70},
+    commentstyle     = \color{red!50!green!50!blue!50},
+    rulesepcolor     = \color{red!20!green!20!blue!20},
+    escapeinside     = ``, % 英文分号中可写入中文
+    xleftmargin      = 2em,xrightmargin = 2em,aboveskip = 1em,
+    framexleftmargin = 2em
+}
+\lstdefinestyle{Python}{
+    language     = Python, % 语言选Python
+    basicstyle   = \zihao{-5}\ttfamily,
+    numberstyle  = \zihao{-5}\ttfamily,
+    keywordstyle = \color{blue},
+    keywordstyle = [2]\color{teal},
+    stringstyle  = \color{magenta},
+    commentstyle = \color{red}\ttfamily,
+    breaklines   = true, % 自动换行，建议不要写太长的行
+    columns      = fixed, % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth    = 0.5em,
+}
 
 \begin{document}
 
@@ -102,6 +142,7 @@
 公钥体制的基础是陷门（单向函数）,即某种实际处理过程的不可逆性。目前的公钥思想基于两种：一是依赖于大数的因数分解的困难性；二是依赖于求模p离散对数的困难性。RSA密码算法就是基于大数的因数分解的困难性\upcite{chenchuanbo2006rsa}。
 
 RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特(Ron Rivest)、阿迪·萨莫尔(Adi Shamir)和伦纳德·阿德曼(Leonard Adleman)在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 
+
 就是他们三人姓氏开头字母拼在一起组成的。1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯(Clifford Cocks)在一个内部文件中提出了一个与之等效的算法，但该算法被列入机密，直到1997年才得到公开。
 
 \href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
@@ -126,9 +167,27 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 \subsection{同余}
 
-同余指的是，对于$a, b \in \mathbb{Z}, n \in \mathbb{Z\textsuperscript{*}}$，若$\exists k \in \mathbb{Z}$，满足$a - b = k \cdot n$，则称 $a, b$ 模 $n$ 同余，记作$a \equiv b (\bmod n)$。你想问我为什么要用乘法定义？噢，太不幸了，我也说不清楚，但是据王鲲鹏老师说，这样定义有助于我们“操作”。
+同余指的是，对于$a, b \in \mathbb{Z}, n \in \mathbb{Z\textsuperscript{*}}$，若$\exists k \in \mathbb{Z}$，满足$a - b = k \cdot n$，则称 $a, b$ 模 $n$ 同余，记作$a \equiv b (\bmod n)$。你想问我为什么要用乘法定义？噢据王鲲鹏老师说，这样定义有助于我们“操作”。
 
-但是，“操作”又是什么东西呢……这还不如告诉我，因为除法不好定义……（哎哟助教我错了，别打我！）
+\subsection{欧几里得算法}
+
+欧几里得算法（或辗转相除法）是得到两数最大公因数的算法，其代码如下：
+
+\lstinputlisting[
+    style   = cpp,
+    caption = {gcd},
+    label   = {gcd.cpp}
+]{contents/gcd.cpp}
+
+下证明算法正确性。设$a > b, c_1 = \gcd(a, b), c_2 = \gcd(b, a \bmod b)$。此时，$c_2 \mid b$ 且 $c_2 \mid (a \bmod b)$，又因为$a = k_1b + (a \bmod b)$，则$c_2 \mid a$，因此 $c_2$ 为 $a, b$的因数，$c_2$ 因而为 $c_1$的因数。同理，$c_1$ 为 $c_2$的因数，即有$c_1 = c_2$。不断进行此操作，即可得到两数的最大公因数。
+
+\subsection{}
+
+\subsection{模的逆}
+
+若 $a \cdot x \equiv 1 (\bmod y)$，则 $a, x$ 互为模 $y$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。形如 $a \cdot x + b \cdot y = d$ 的方程被称为裴蜀（Bezout）等式或贝祖等式。$x, y$已知，则此等式存在整数解$a, b \iff \gcd(x, y) \mid d$。 % ，即上式中的 $a$ 有解当且仅当$x, y$互素。
+
+% 先证上述定理。当 $a \cdot x + b \cdot y$ 时，显然有 $\frac{a \cdot x}{\gcd(x, y)} + \frac{b \cdot y}{\gcd(x, y)}$ 恒为整数，可得 $\gcd(x, y) \mid d$。当 $\gcd(x, y) \mid d$ 时，因为 $\gcd(\frac{x}{\gcd(x, y)},\frac{y}{\gcd(x, y)}) = 1$ ，即证 $x, y$ 互素时， $a \cdot x + b \cdot y = k$恒有解。
 
 \subsection{欧拉函数}
 
@@ -189,14 +248,15 @@ $n$一定属于以上某条件，可用归纳法证明：
 
 \[
 	\begin{cases}
-		x_1 \equiv a_1(mod n_1), x_1 \equiv 0 (mod n_2), x_1 \equiv 0 (mod n_3), \cdots, x_r \equiv 0 (mod n_r)\\
-		x_2 \equiv 0(mod n_1), x_2 \equiv a_2 (mod n_2), x_2 \equiv 0 (mod n_3), \cdots, x_r \equiv 0 (mod n_r)\\
+		x_1 \equiv a_1(\bmod n_1), x_1 \equiv 0 (\bmod n_2), x_1 \equiv 0 (\bmod n_3), \cdots, x_r \equiv 0 (\bmod n_r)\\
+		x_2 \equiv 0(\bmod n_1), x_2 \equiv a_2 (\bmod n_2), x_2 \equiv 0 (\bmod n_3), \cdots, x_r \equiv 0 (\bmod n_r)\\
 		\vdots\\
-		x_r \equiv 0(mod n_1), x_r \equiv 0 (mod n_2), \cdots, x_r \equiv a_r (mod n_r)\\
+		x_r \equiv 0(\bmod n_1), x_r \equiv 0 (\bmod n_2), \cdots, x_r \equiv a_r (\bmod n_r)\\
+		x = \sum \limits_{i=1}^{r} x_i
 	\end{cases}
 \]
 
-套用性质 \ref{CRT性质拆分} 的公式，得$x = \sum \limits_{i=1}^{r} x_i$。此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$k_i$为$n_1,n_2, \cdots, n_{i-1}, n_{i+1}, \cdots, n_r$的公因子乘积，根据性质 \ref{CRT性质找数} 则有$x_i'$满足$k_i \cdot x_i' \equiv 1 (\bmod n_i)$，即求逆元。
+此时，利用性质 \ref{CRT性质倍数}，可以将 $x_i \equiv a_i(\bmod n_i)$简化为求$x_i' \equiv 1 (\bmod n_i)$ 且 $x_i = a_i \cdot x_i'$。令$k_i$为$n_1,n_2, \cdots, n_{i-1}, n_{i+1}, \cdots, n_r$的公因子乘积，根据性质 \ref{CRT性质找数} 则有$x_i'$满足$k_i \cdot x_i' \equiv 1 (\bmod n_i)$，即求 $k_i$ 模 $n_i$ 的逆\upcite{中国剩余定理(CRT)}。
 
 不是很能看懂。直接贴个\href{https://zhuanlan.zhihu.com/p/600282116}{链接}。（大概理解意思，但是不理解“第二种证明方法有问题”，显然是没真明白）
 
