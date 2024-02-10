@@ -1,36 +1,35 @@
-\documentclass[a4paper]{article}  % 设置纸张大小
-\usepackage[margin=1in]{geometry} % 设置边距，符合Word设定
-\usepackage{ctex} % 对中文支持的宏包
-\usepackage{cite} % 引用
-\usepackage{amsfonts} % 输入数集符号
-\usepackage{amsmath} % 数学支持
-\usepackage{graphicx} % 插入图片所需要的宏包
-\usepackage{lipsum} % 生成虚拟文本（Lorem Ipsum）的宏包，测试或者占位用。
-\usepackage{amssymb} % 为了得到漂亮的\geqslant \leqslant 使用的包
-\usepackage{url} % bibtex中引用herf
-\usepackage{listings} % 添加程序代码
-\usepackage{xcolor} % 加以渲染代码颜色
-\usepackage[colorlinks=true]{hyperref} % [hidelinks]取消超链接颜色，并且目录有超链接。为了避免宏包冲突，将这个包放在最后调用。
+\documentclass[a4paper]{article}         % 设置纸张大小
+\usepackage[margin=1in]{geometry}        % 设置边距，符合Word设定
+\usepackage{ctex}                        % 对中文支持的宏包
+\usepackage{cite}                        % 引用
+\usepackage{amsfonts}                    % 输入数集符号
+\usepackage{amsmath}                     % 数学支持
+\usepackage{graphicx}                    % 插入图片所需要的宏包
+\usepackage{lipsum}                      % 生成虚拟文本（Lorem Ipsum）的宏包，测试或者占位用。
+\usepackage{amssymb}                     % 为了得到漂亮的\geqslant \leqslant 使用的包
+\usepackage{url}                         % bibtex中引用herf
+\usepackage{listings}                    % 添加程序代码
+\usepackage{xcolor}                      % 加以渲染代码颜色
+\usepackage[colorlinks=true]{hyperref}   % [hidelinks]取消超链接颜色，并且目录有超链接。为了避免宏包冲突，将这个包放在最后调用。
 
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
-% 定义上标引用，若套两层会让上标更“上”一点
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 定义上标引用，若套两层会让上标更“上”一点
 \title{\heiti\zihao{2} RSA}
 \author{\songti Crazy\_13754}
 \date{\today}
 
 \lstset{
-    basicstyle       = \sffamily, % 基本代码风格
-    keywordstyle     = \bfseries, % 关键字风格
-    commentstyle     = \rmfamily\itshape, % 注释的风格，斜体
-    stringstyle      = \ttfamily, % 字符串风格
-    flexiblecolumns, % 别问为什么，加上这个
-    numbers          = left, % 行号的位置在左边
-    showspaces       = false, % 是否显示空格，显示了有点乱，所以不显示了
-    numberstyle      = \zihao{-5}\ttfamily, % 行号的样式，小五号，tt等宽字体
+    basicstyle       = \sffamily,            % 基本代码风格
+    keywordstyle     = \bfseries,            % 关键字风格
+    commentstyle     = \rmfamily\itshape,    % 注释的风格，斜体
+    stringstyle      = \ttfamily,            % 字符串风格
+    flexiblecolumns,                         % 别问为什么，加上这个
+    numbers          = left,                 % 行号的位置在左边
+    showspaces       = false,                % 是否显示空格，显示了有点乱，所以不显示了
+    numberstyle      = \zihao{-5}\ttfamily,  % 行号的样式，小五号，tt等宽字体
     showstringspaces = false,
-    captionpos       = t, % 这段代码的名字所呈现的位置，t指的是top上面
-    frame            = lrtb, % 显示边框
-    frame            = shadowbox, % 阴影效果
+    captionpos       = t,                    % 这段代码的名字所呈现的位置，t指的是top上面
+    frame            = lrtb,                 % 显示边框
+    frame            = shadowbox,            % 阴影效果
 }
 
 \lstdefinestyle{cpp}{
@@ -38,21 +37,21 @@
     keywordstyle     = \color{blue!70},
     commentstyle     = \color{red!50!green!50!blue!50},
     rulesepcolor     = \color{red!20!green!20!blue!20},
-    escapeinside     = ``, % 英文分号中可写入中文
+    escapeinside     = ``,                   % 英文分号中可写入中文
     xleftmargin      = 2em,xrightmargin = 2em,aboveskip = 1em,
     framexleftmargin = 2em
 }
 \lstdefinestyle{Python}{
-    language     = Python, % 语言选Python
-    basicstyle   = \zihao{-5}\ttfamily,
-    numberstyle  = \zihao{-5}\ttfamily,
-    keywordstyle = \color{blue},
-    keywordstyle = [2]\color{teal},
-    stringstyle  = \color{magenta},
-    commentstyle = \color{red}\ttfamily,
-    breaklines   = true, % 自动换行，建议不要写太长的行
-    columns      = fixed, % 如果不加这一句，字间距就不固定，很丑，必须加
-    basewidth    = 0.5em,
+    language         = Python,               % 语言选Python
+    basicstyle       = \zihao{-5}\ttfamily,
+    numberstyle      = \zihao{-5}\ttfamily,
+    keywordstyle     = \color{blue},
+    keywordstyle     = [2]\color{teal},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{red}\ttfamily,
+    breaklines       = true,                 % 自动换行，建议不要写太长的行
+    columns          = fixed,                % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth        = 0.5em,
 }
 
 \begin{document}
