@@ -225,12 +225,41 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
     label   = {exgcd.cpp}
 ]{contents/exgcd.cpp}
 
+% 考虑通解的情况。若已知解为 $x_1, y_1$, 且有 $x_2 = x_1 + k$ 也可以构成解，则有 $a x_2 + a k + b y = c$，即 $a x_2 + b(y + \frac{a}{b} k) = c$。上式中 $k, \frac{a}{b} k \in \mathbb{Z}$ 才有意义，又有：
+
+% \[
+%     \frac{a}{b} = \frac{\frac{a}{\gcd(a, b)}}{\frac{b}{\gcd(a, b)}} \quad\text{记为} \frac{a'}{b'}
+%     \]
+
+% 则应有 $k = k'b'$，即有通解 $x_k = x_1 + k \frac{b}{\gcd(a, b)}$，$y_k = x_k - k \frac{a}{\gcd(a, b)}$。
+
+考虑通解的情况。若已知解为 $x_1, y_1$ 且 $x_2, y_2$ 也为一组解，那么两方程相减可得：
+
+\begin{equation}
+    \begin{aligned} \notag
+        (x_1 - x_2)a + (y_1 - y_2)b & = 0 \\
+        (x_1 - x_2)a & = (y_2 - y_1)b \\
+        (x_1 - x_2) \frac{a}{\gcd(a, b)} & = (y_2 - y_1) \frac{b}{\gcd(a, b)} \\
+    \end{aligned}
+\end{equation}
+
+由于 $\frac{a}{\gcd(a, b)}$ 与 $\frac{b}{\gcd(a, b)}$ 互素，则有 $\frac{a}{\gcd(a, b)} \vert (y_2 - y_1)$，$\frac{b}{\gcd(a, b)} \vert (x_1 - x_2)$，即通解可以写为：
+
+\begin{equation}
+    \begin{cases}
+        x_k = x_1 + k \frac{b}{\gcd(a, b)} \\
+        y_k = x_k - k \frac{a}{\gcd(a, b)} \\
+    \end{cases}
+\end{equation}
 \subsection{模的逆}
 
-若 $a \cdot x \equiv 1 (\bmod y)$，则 $a, x$ 互为模 $y$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。形如 $a \cdot x + b \cdot y = d$ 的方程被称为裴蜀(Bezout)等式或贝祖等式。$x, y$已知，则此等式存在整数解$a, b \iff \gcd(x, y) \mid d$。 即上式中的 $a,b$ 有解当且仅当$x, y$互素。
+% 若 $a \cdot x \equiv 1 (\bmod y)$，则 $a, x$ 互为模 $y$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。形如 $a \cdot x + b \cdot y = d$ 的方程被称为裴蜀(Bezout)等式或贝祖等式。$x, y$已知，则此等式存在整数解$a, b \iff \gcd(x, y) \mid d$。 即上式中的 $a,b$ 有解当且仅当$x, y$互素。
 
-先证上述定理。当 $a \cdot x + b \cdot y$ 时，显然有 $\frac{a \cdot x}{\gcd(x, y)} + \frac{b \cdot y}{\gcd(x, y)}$ 恒为整数，可得 $\gcd(x, y) \mid d$。当 $\gcd(x, y) \mid d$ 时，因为 $\gcd(\frac{x}{\gcd(x, y)},\frac{y}{\gcd(x, y)}) = 1$ ，即证 $x, y$ 互素时， $a \cdot x + b \cdot y = k$恒有解。
+% 先证上述定理。当 $a \cdot x + b \cdot y$ 时，显然有 $\frac{a \cdot x}{\gcd(x, y)} + \frac{b \cdot y}{\gcd(x, y)}$ 恒为整数，可得 $\gcd(x, y) \mid d$。当 $\gcd(x, y) \mid d$ 时，因为 $\gcd(\frac{x}{\gcd(x, y)},\frac{y}{\gcd(x, y)}) = 1$ ，即证 $x, y$ 互素时， $a \cdot x + b \cdot y = k$恒有解。
 
+若 $a \cdot x \equiv 1 (\bmod b)$，则 $x$ 为 $a$ 模 $b$ 意义下的逆元。变换形式，可得$a \cdot x + b \cdot y = 1$。由 \ref{裴蜀定理} 节， 当 $\gcd(a, b) = 1$，也就是 $a, b$ 互素时逆元一定存在。
+
+% TODO 线性求逆元
 \subsection{欧拉函数}
 
 欧拉函数$\varphi(n)$表示小于等于$n$的正整数中与其互质的数字个数。其可表示为：
