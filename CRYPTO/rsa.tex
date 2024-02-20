@@ -180,14 +180,50 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 若$a < b$，则 $\gcd(a, b) = \gcd(b, a)$，同上。
 
-\subsection{裴蜀定理}
+\subsection{裴蜀定理} \label{裴蜀定理}
 % ! 谁来教教我啊
 
-$a, b$ 不全为零，则有解 $x, y$ 满足 $\gcd(a, b) \vert ax + by$，且 $a, b$ 互素与 $ax + by = 1$ 有解为充
+裴蜀定理可表述为：若 $a, b$ 不全为零，则 $\forall x, y \in \mathbb{Z}$ ， 有 $\gcd(a, b) \vert ax + by$ ，且 $\exists x, y$，使 $ax + by = gcd(a, b)$。
+
+因为$\gcd(a, b) \vert a, b$ ，所以$\forall x, y \in \mathbb{Z}$， $\gcd(a, b) \vert ax + by$ 一定成立。 
+
+因为 $\frac{a}{\gcd(a, b)}$ 与 $\frac{b}{\gcd(a, b)}$ 均为整数且互素，因而 $ax + by = gcd(a, b)$ 有解可转为 $\frac{a}{\gcd(a, b)} x + \frac{b}{\gcd(a, b)} y = 1$，即证明 $a_1, b_1$ 互素时，$a_1 x + b_1 y = 1$ 恒有解。
+
+展开欧几里得算法可得：
+
+\begin{gather*}
+    a_1 = q_1 b_1 + r_1 \\
+    b_1 = q_2 r_1 + r_2 \\
+    \cdots              \\
+    r_{n-2} = q_{n} r_{n-1} + r_n\\
+    r_{n-1} = q_{n+1} r_{n}\\
+\end{gather*}
+
+且 $r_n = \gcd(a_1, b_1) = 1$，则有：
+
+\begin{equation}
+    \label{裴蜀定理消余数方程组}
+    \begin{aligned}
+        1 & = r_n \\
+        & = r_{n-2} - q_n r_{n-1} \\
+        & = r_{n-2} - q_n (r_{n-3} - q_{n-1}r_{n-2}) \\
+        & \cdots
+    \end{aligned}
+\end{equation}
+
+用同样方法不断消去 $r_{n-2}, r_{n-3}, \cdots, r_1$ 可得 $a_1 x + b_1 y = 1$ 有解。
 
 \subsection{拓展欧几里德算法}
 
 % https://zhuanlan.zhihu.com/p/100567253
+
+拓展欧几里德算法就是求 $ax + by = c$ 的一组解的方法。由 \ref{裴蜀定理} 节，$c$ 一定是 $\gcd(a, b)$ 的倍数。此时，重复方程 \ref{裴蜀定理消余数方程组} 的过程即可求 $ax + buy = c$ 的一组解。算法过程如下：
+
+\lstinputlisting[
+    style   = cpp,
+    caption = {exgcd},
+    label   = {exgcd.cpp}
+]{contents/exgcd.cpp}
 
 \subsection{模的逆}
 
