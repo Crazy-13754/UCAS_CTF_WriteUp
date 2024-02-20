@@ -142,7 +142,7 @@
 
 RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特(Ron Rivest)、阿迪·萨莫尔(Adi Shamir)和伦纳德·阿德曼(Leonard Adleman)在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯(Clifford Cocks)在一个内部文件中提出了一个与之等效的算法，但该算法被列入机密，直到1997年才得到公开。
 
-\href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % 这个记得要写
+\href{https://mathmu.github.io/MTCAS/doc/IntegerFactorization.html}{这篇文章}介绍了因子分解的相关算法，然而，这其中的很多方法对RSA来说并不适用。对于RSA的“暴力”攻击来说，\href{https://zh.wikipedia.org/wiki/%E6%99%AE%E9%80%9A%E6%95%B0%E5%9F%9F%E7%AD%9B%E9%80%89%E6%B3%95}{普通数域筛法(GNFS)}应该是最优的。如果我能看懂这个算法的话，会加上对它的介绍的…… % TODO 这个记得要写
 
 \section{RSA加密与解密过程} \label{RSA加密与解密过程}
 
@@ -155,7 +155,7 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 	\item 小收将$(N, e)$作为公钥 (pk, Public key) 发给对方，$(N, d)$作为私钥(pk, Private key)保存。
 	\item 小发接受公钥后，将原文(pt, Plaintext)通过预先设定好的方式转换成数字，记为$pt$，则密文(ct, Ciphertext)满足$ct = p ^ e \bmod N$（也就是$ct \equiv pt ^ e (\bmod N)$），对方将密文发回。
 	\item 小收接收密文，并使用私钥解密：$pt = ct ^ d \bmod N$，也就是$pt \equiv ct ^ d (\bmod N)$。
-		% 需要一个很好的流程图
+		% TODO 需要一个很好的流程图
 \end{itemize}
 
 \section{RSA数学基础与证明} \label{RSA数学基础与证明}
@@ -284,7 +284,7 @@ $n$一定属于以上某条件，可用归纳法证明：
 
 设$A = \{ x \vert \gcd(x, m) = 1, x \leqslant m \}, B = \{ y \vert \gcd(y, n) = 1, y \leqslant n \}, C = \{ z \vert \gcd(z, mn) = 1, z \leqslant mn \}$，则 $\varphi(m) = \left\lvert A\right\rvert,\varphi(n) = \left\lvert B\right\rvert,\varphi(mn) = \left\lvert C\right\rvert$。
 
-$\because \gcd(m, n) = 1s$
+$\because \gcd(m, n) = 1$
 
 $\therefore A \bigcap B = \{ 1 \}$
 
