@@ -53,3 +53,6 @@
 
 #obsidian files
 .obsidian/
+
+#PDF files, need to delete after completed.
+CRYPTO/rsa.pdf
