@@ -139,6 +139,9 @@ mov     rsi, r12
 
 ## 构造shellcode
 
+有用的网站：
+- [Online x86 / x64 Assembler and Disassembler](https://defuse.ca/online-x86-assembler.htm#disassembly)
+
 要用syscall调用shell，各个寄存器的值应是：
 - rax : 0x3b (系统调用号)
 - rdi : rsp的地址 (先要把/bin//sh压入栈顶)
