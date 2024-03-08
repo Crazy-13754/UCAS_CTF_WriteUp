@@ -18,40 +18,40 @@
 \date{\today}
 
 \lstset{
-    basicstyle       = \sffamily,            % 基本代码风格
-    keywordstyle     = \bfseries,            % 关键字风格
-    commentstyle     = \rmfamily\itshape,    % 注释的风格，斜体
-    stringstyle      = \ttfamily,            % 字符串风格
-    flexiblecolumns,                         % 别问为什么，加上这个
-    numbers          = left,                 % 行号的位置在左边
-    showspaces       = false,                % 是否显示空格，显示了有点乱，所以不显示了
-    numberstyle      = \zihao{-5}\ttfamily,  % 行号的样式，小五号，tt等宽字体
-    showstringspaces = false,
-    captionpos       = t,                    % 这段代码的名字所呈现的位置，t指的是top上面
-    frame            = lrtb,                 % 显示边框
-    frame            = shadowbox,            % 阴影效果
+	basicstyle       = \sffamily,            % 基本代码风格
+	keywordstyle     = \bfseries,            % 关键字风格
+	commentstyle     = \rmfamily\itshape,    % 注释的风格，斜体
+	stringstyle      = \ttfamily,            % 字符串风格
+	flexiblecolumns,                         % 别问为什么，加上这个
+	numbers          = left,                 % 行号的位置在左边
+	showspaces       = false,                % 是否显示空格，显示了有点乱，所以不显示了
+	numberstyle      = \zihao{-5}\ttfamily,  % 行号的样式，小五号，tt等宽字体
+	showstringspaces = false,
+	captionpos       = t,                    % 这段代码的名字所呈现的位置，t指的是top上面
+	frame            = lrtb,                 % 显示边框
+	frame            = shadowbox,            % 阴影效果
 }
 
 \lstdefinestyle{cpp}{
-    language         = C++,
-    keywordstyle     = \color{blue!70},
-    commentstyle     = \color{red!50!green!50!blue!50},
-    rulesepcolor     = \color{red!20!green!20!blue!20},
-    escapeinside     = ``,                   % 英文分号中可写入中文
-    xleftmargin      = 2em,xrightmargin = 2em,aboveskip = 1em,
-    framexleftmargin = 2em
+	language         = C++,
+	keywordstyle     = \color{blue!70},
+	commentstyle     = \color{red!50!green!50!blue!50},
+	rulesepcolor     = \color{red!20!green!20!blue!20},
+	escapeinside     = ``,                   % 英文分号中可写入中文
+	xleftmargin      = 2em,xrightmargin = 2em,aboveskip = 1em,
+	framexleftmargin = 2em
 }
 \lstdefinestyle{Python}{
-    language         = Python,               % 语言选Python
-    basicstyle       = \zihao{-5}\ttfamily,
-    numberstyle      = \zihao{-5}\ttfamily,
-    keywordstyle     = \color{blue},
-    keywordstyle     = [2]\color{teal},
-    stringstyle      = \color{magenta},
-    commentstyle     = \color{red}\ttfamily,
-    breaklines       = true,                 % 自动换行，建议不要写太长的行
-    columns          = fixed,                % 如果不加这一句，字间距就不固定，很丑，必须加
-    basewidth        = 0.5em,
+	language         = Python,               % 语言选Python
+	basicstyle       = \zihao{-5}\ttfamily,
+	numberstyle      = \zihao{-5}\ttfamily,
+	keywordstyle     = \color{blue},
+	keywordstyle     = [2]\color{teal},
+	stringstyle      = \color{magenta},
+	commentstyle     = \color{red}\ttfamily,
+	breaklines       = true,                 % 自动换行，建议不要写太长的行
+	columns          = fixed,                % 如果不加这一句，字间距就不固定，很丑，必须加
+	basewidth        = 0.5em,
 }
 
 \begin{document}
@@ -155,7 +155,7 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 	\item 小收将$(N, \phantom{;} e)$作为公钥 (pk, Public key) 发给对方，$(N, \phantom{;} d)$作为私钥(pk, Private key)保存。
 	\item 小发接受公钥后，将原文(pt, Plaintext)通过预先设定好的方式转换成数字，记为$pt$，则密文(ct, Ciphertext)满足$ct = p ^ e \bmod \phantom{;} N$（也就是$ct \equiv pt ^ e (\bmod \phantom{;} N)$），对方将密文发回。
 	\item 小收接收密文，并使用私钥解密：$pt = ct ^ d \bmod \phantom{;} N$，也就是$pt \equiv ct ^ d (\bmod \phantom{;} N)$。
-		% TODO 需要一个很好的流程图
+	      % TODO 需要一个很好的流程图
 \end{itemize}
 
 \section{RSA数学基础与证明} \label{RSA数学基础与证明}
@@ -171,9 +171,9 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 欧几里得算法（或辗转相除法）是得到两数最大公因数的算法，其代码如下：
 
 \lstinputlisting[
-    style   = cpp,
-    caption = {gcd},
-    label   = {gcd.cpp}
+	style   = cpp,
+	caption = {gcd},
+	label   = {gcd.cpp}
 ]{contents/gcd.cpp}
 
 下证明算法正确性。设$a > b, \phantom{;} c_1 = \gcd(a, \phantom{;} b), \phantom{;} c_2 = \gcd(b, \phantom{;} a \bmod \phantom{;} b)$。此时，$c_2 \mid b$ 且 $c_2 \mid (a \bmod \phantom{;} b)$，又因为$a = k_1b + (a \bmod \phantom{;} b)$，则$c_2 \mid a$，因此 $c_2$ 为 $a, \phantom{;} b$的因数，$c_2$ 因而为 $c_1$的因数。同理，$c_1$ 为 $c_2$的因数，即有$c_1 = c_2$。不断进行此操作，即可得到两数的最大公因数。
@@ -185,30 +185,30 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 裴蜀定理可表述为：若 $a, \phantom{;} b$ 不全为零，则 $\forall x, \phantom{;} y \in \mathbb{Z}$ ， 有 $\gcd(a, \phantom{;} b) \vert ax + by$ ，且 $\exists x, \phantom{;} y$，使 $ax + by = gcd(a, \phantom{;} b)$。
 
-因为$\gcd(a, \phantom{;} b) \vert a, \phantom{;} b$ ，所以$\forall x, \phantom{;} y \in \mathbb{Z}$， $\gcd(a, \phantom{;} b) \vert ax + by$ 一定成立。 
+因为$\gcd(a, \phantom{;} b) \vert a, \phantom{;} b$ ，所以$\forall x, \phantom{;} y \in \mathbb{Z}$， $\gcd(a, \phantom{;} b) \vert ax + by$ 一定成立。
 
 因为 $\frac{a}{\gcd(a, \phantom{;} b)}$ 与 $\frac{b}{\gcd(a, \phantom{;} b)}$ 均为整数且互素，因而 $ax + by = gcd(a, \phantom{;} b)$ 有解可转为 $\frac{a}{\gcd(a, \phantom{;} b)} x + \frac{b}{\gcd(a, \phantom{;} b)} y = 1$，即证明 $a_1, \phantom{;} b_1$ 互素时，$a_1 x + b_1 y = 1$ 恒有解。
 
 展开欧几里得算法可得：
 
 \begin{gather*}
-    a_1 = q_1 b_1 + r_1 \\
-    b_1 = q_2 r_1 + r_2 \\
-    \cdots              \\
-    r_{n-2} = q_{n} r_{n-1} + r_n\\
-    r_{n-1} = q_{n+1} r_{n}\\
+	a_1 = q_1 b_1 + r_1 \\
+	b_1 = q_2 r_1 + r_2 \\
+	\cdots              \\
+	r_{n-2} = q_{n} r_{n-1} + r_n\\
+	r_{n-1} = q_{n+1} r_{n}\\
 \end{gather*}
 
 且 $r_n = \gcd(a_1, \phantom{;} b_1) = 1$，则有：
 
 \begin{equation}
-    \label{裴蜀定理消余数方程组}
-    \begin{aligned}
-        1 & = r_n \\
-        & = r_{n-2} - q_n r_{n-1} \\
-        & = r_{n-2} - q_n (r_{n-3} - q_{n-1}r_{n-2}) \\
-        & \cdots
-    \end{aligned}
+	\label{裴蜀定理消余数方程组}
+	\begin{aligned}
+		1 & = r_n                                      \\
+		  & = r_{n-2} - q_n r_{n-1}                    \\
+		  & = r_{n-2} - q_n (r_{n-3} - q_{n-1}r_{n-2}) \\
+		  & \cdots
+	\end{aligned}
 \end{equation}
 
 用同样方法不断消去 $r_{n-2}, \phantom{;} r_{n-3}, \phantom{;} \cdots, \phantom{;} r_1$ 可得 $a_1 x + b_1 y = 1$ 有解。
@@ -220,9 +220,9 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 拓展欧几里德算法就是求 $ax + by = c$ 的一组解的方法。由 \ref{裴蜀定理} 节，$c$ 一定是 $\gcd(a, \phantom{;} b)$ 的倍数。此时，重复方程 \ref{裴蜀定理消余数方程组} 的过程即可求 $ax + buy = c$ 的一组解。算法过程如下：
 
 \lstinputlisting[
-    style   = cpp,
-    caption = {exgcd},
-    label   = {exgcd.cpp}
+	style   = cpp,
+	caption = {exgcd},
+	label   = {exgcd.cpp}
 ]{contents/exgcd.cpp}
 
 % 考虑通解的情况。若已知解为 $x_1, \phantom{;} y_1$, \phantom{;} 且有 $x_2 = x_1 + k$ 也可以构成解，则有 $a x_2 + a k + b y = c$，即 $a x_2 + b(y + \frac{a}{b} k) = c$。上式中 $k, \phantom{;} \frac{a}{b} k \in \mathbb{Z}$ 才有意义，又有：
@@ -236,20 +236,20 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 考虑通解的情况。若已知解为 $x_1, \phantom{;} y_1$ 且 $x_2, \phantom{;} y_2$ 也为一组解，那么两方程相减可得：
 
 \begin{equation}
-    \begin{aligned} \notag
-        (x_1 - x_2)a + (y_1 - y_2)b & = 0 \\
-        (x_1 - x_2)a & = (y_2 - y_1)b \\
-        (x_1 - x_2) \frac{a}{\gcd(a, \phantom{;} b)} & = (y_2 - y_1) \frac{b}{\gcd(a, \phantom{;} b)} \\
-    \end{aligned}
+	\begin{aligned} \notag
+		(x_1 - x_2)a + (y_1 - y_2)b                  & = 0                                            \\
+		(x_1 - x_2)a                                 & = (y_2 - y_1)b                                 \\
+		(x_1 - x_2) \frac{a}{\gcd(a, \phantom{;} b)} & = (y_2 - y_1) \frac{b}{\gcd(a, \phantom{;} b)} \\
+	\end{aligned}
 \end{equation}
 
 由于 $\frac{a}{\gcd(a, \phantom{;} b)}$ 与 $\frac{b}{\gcd(a, \phantom{;} b)}$ 互素，则有 $\frac{a}{\gcd(a, \phantom{;} b)} \vert (y_2 - y_1)$，$\frac{b}{\gcd(a, \phantom{;} b)} \vert (x_1 - x_2)$，即通解可以写为：
 
 \begin{equation}
-    \begin{cases}
-        x_k = x_1 + k \frac{b}{\gcd(a, \phantom{;} b)} \\
-        y_k = x_k - k \frac{a}{\gcd(a, \phantom{;} b)} \\
-    \end{cases}
+	\begin{cases}
+		x_k = x_1 + k \frac{b}{\gcd(a, \phantom{;} b)} \\
+		y_k = x_k - k \frac{a}{\gcd(a, \phantom{;} b)} \\
+	\end{cases}
 \end{equation}
 \subsection{模的逆}
 
@@ -266,8 +266,8 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 \[
 	\varphi(n)=\begin{cases}
-		1, \phantom{;} &n = 1\\
-		n(1- \frac{1}{p_1})(1-\frac{1}{p_2}) \cdots (1-\frac{1}{p_r}), \phantom{;} &n = p_{1}^{k_1} p_{2}^{k_2} \cdots p_{r}^{k_r}
+		1, \phantom{;}                                                             & n = 1                                          \\
+		n(1- \frac{1}{p_1})(1-\frac{1}{p_2}) \cdots (1-\frac{1}{p_r}), \phantom{;} & n = p_{1}^{k_1} p_{2}^{k_2} \cdots p_{r}^{k_r}
 	\end{cases}
 \]
 
@@ -287,7 +287,7 @@ $n$一定属于以上某条件，可用归纳法证明：
 \subsubsection{使用容斥原理证明}
 
 \begin{sloppypar}
-先考虑$n = p_{1}^{k_1}p_{2}^{k_2}$的情况。在计数$\varphi(n)$的过程中不计数$p_1, \phantom{;} 2p_1, \phantom{;} \ldots, \phantom{;} \lfloor \frac{n}{p_1} \rfloor p_1$，同理对$p_2, \phantom{;} 2p_2, \phantom{;} \ldots, \phantom{;} \lfloor \frac{N}{p_2} \rfloor p_2$也不应该计数，并根据容斥原理（计数时重复计数的部分要扣除）还需要在结果中加上$p_1p_2, \phantom{;} 2p_1p_2, \phantom{;} \cdots, \phantom{;} \lfloor \frac{n}{p_1} \rfloor p_2$的数量。这证明了$\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})$。
+	先考虑$n = p_{1}^{k_1}p_{2}^{k_2}$的情况。在计数$\varphi(n)$的过程中不计数$p_1, \phantom{;} 2p_1, \phantom{;} \ldots, \phantom{;} \lfloor \frac{n}{p_1} \rfloor p_1$，同理对$p_2, \phantom{;} 2p_2, \phantom{;} \ldots, \phantom{;} \lfloor \frac{N}{p_2} \rfloor p_2$也不应该计数，并根据容斥原理（计数时重复计数的部分要扣除）还需要在结果中加上$p_1p_2, \phantom{;} 2p_1p_2, \phantom{;} \cdots, \phantom{;} \lfloor \frac{n}{p_1} \rfloor p_2$的数量。这证明了$\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})$。
 \end{sloppypar}
 
 同理，% $\forall m, \phantom{;} n \in \mathbb{Z\textsuperscript{*}}$，
@@ -298,14 +298,14 @@ $n$一定属于以上某条件，可用归纳法证明：
 先介绍中国剩余定理。它旨在解决形如下式的问题：
 
 \begin{equation}
-    \label{中国剩余定理问题方程组}
+	\label{中国剩余定理问题方程组}
 	\begin{cases}
-		x \equiv a_1(\bmod \phantom{;} n_1)      \\
-		x \equiv a_2(\bmod \phantom{;} n_2)      \\
-		\cdots                                   \\
-		x \equiv a_r(\bmod \phantom{;} n_r)      \\
+		x \equiv a_1(\bmod \phantom{;} n_1) \\
+		x \equiv a_2(\bmod \phantom{;} n_2) \\
+		\cdots                              \\
+		x \equiv a_r(\bmod \phantom{;} n_r) \\
 	\end{cases}
-    (\forall i, \phantom{;} j \leqslant r, \phantom{;} \gcd(n_i, \phantom{;} n_j) = 1)
+	(\forall i, \phantom{;} j \leqslant r, \phantom{;} \gcd(n_i, \phantom{;} n_j) = 1)
 \end{equation}
 
 这个定理推导基于以下性质：
@@ -321,10 +321,10 @@ $n$一定属于以上某条件，可用归纳法证明：
 
 \[
 	\begin{cases}
-		x_1 \equiv a_1(\bmod \phantom{;} n_1), \phantom{;} x_1 \equiv 0 (\bmod \phantom{;} n_2), \phantom{;} x_1 \equiv 0 (\bmod \phantom{;} n_3), \phantom{;} \cdots, \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_r)\\
-		x_2 \equiv 0(\bmod \phantom{;} n_1), \phantom{;} x_2 \equiv a_2 (\bmod \phantom{;} n_2), \phantom{;} x_2 \equiv 0 (\bmod \phantom{;} n_3), \phantom{;} \cdots, \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_r)\\
-		\vdots\\
-		x_r \equiv 0(\bmod \phantom{;} n_1), \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_2), \phantom{;} \cdots, \phantom{;} x_r \equiv a_r (\bmod \phantom{;} n_r)\\
+		x_1 \equiv a_1(\bmod \phantom{;} n_1), \phantom{;} x_1 \equiv 0 (\bmod \phantom{;} n_2), \phantom{;} x_1 \equiv 0 (\bmod \phantom{;} n_3), \phantom{;} \cdots, \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_r) \\
+		x_2 \equiv 0(\bmod \phantom{;} n_1), \phantom{;} x_2 \equiv a_2 (\bmod \phantom{;} n_2), \phantom{;} x_2 \equiv 0 (\bmod \phantom{;} n_3), \phantom{;} \cdots, \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_r) \\
+		\vdots                                                                                                                                                                                                          \\
+		x_r \equiv 0(\bmod \phantom{;} n_1), \phantom{;} x_r \equiv 0 (\bmod \phantom{;} n_2), \phantom{;} \cdots, \phantom{;} x_r \equiv a_r (\bmod \phantom{;} n_r)                                                   \\
 		x = \sum \limits_{i=1}^{r} x_i
 	\end{cases}
 \]
@@ -333,13 +333,13 @@ $n$一定属于以上某条件，可用归纳法证明：
 
 \[
 	\begin{cases}
-		x_1 = a_1\frac{N}{n_1} \cdot \operatorname{invert}(\frac{N}{n_1}, \phantom{;} n_1)\\
-        x_2 = a_2\frac{N}{n_2} \cdot \operatorname{invert}(\frac{N}{n_2}, \phantom{;} n_2)\\
-        \vdots                                      \\
-        x_i = a_i\frac{N}{n_i} \cdot \operatorname{invert}(\frac{N}{n_i}, \phantom{;} n_i) \\
-        \vdots                                      \\
-        x_r = a_r\frac{N}{n_r} \cdot \operatorname{invert}(\frac{N}{n_r}, \phantom{;} n_r)\\
-        x \equiv \sum \limits_{i=1}^{r} x_i(\bmod \phantom{;} n)
+		x_1 = a_1\frac{N}{n_1} \cdot \operatorname{invert}(\frac{N}{n_1}, \phantom{;} n_1) \\
+		x_2 = a_2\frac{N}{n_2} \cdot \operatorname{invert}(\frac{N}{n_2}, \phantom{;} n_2) \\
+		\vdots                                                                             \\
+		x_i = a_i\frac{N}{n_i} \cdot \operatorname{invert}(\frac{N}{n_i}, \phantom{;} n_i) \\
+		\vdots                                                                             \\
+		x_r = a_r\frac{N}{n_r} \cdot \operatorname{invert}(\frac{N}{n_r}, \phantom{;} n_r) \\
+		x \equiv \sum \limits_{i=1}^{r} x_i(\bmod \phantom{;} n)
 	\end{cases}
 \]
 
@@ -366,10 +366,10 @@ $\therefore \gcd(p, \phantom{;} m) = \gcd(q, \phantom{;} n) = 1$
 由中国剩余定理，方程组
 
 \[
-    \begin{cases}
-        N \equiv p(\bmod \phantom{;} m)\\
-        N \equiv q(\bmod \phantom{;} n)\\
-    \end{cases}
+	\begin{cases}
+		N \equiv p(\bmod \phantom{;} m) \\
+		N \equiv q(\bmod \phantom{;} n) \\
+	\end{cases}
 \]
 
 有通解$N = kmn + pnt_1 + qnt_2$，其中$nt_1 \equiv 1(\bmod \phantom{;} m), \phantom{;} mt_2 \equiv 1 (\bmod \phantom{;} n)$。
@@ -393,7 +393,7 @@ $\therefore \forall n \in \mathbb{Z\textsuperscript{*}}, \phantom{;} n = p_1^{k_
 费马小定理是这个定理 $n = p$ 时的特殊形式，即：
 
 \[
-    a ^ {p-1} \equiv (\bmod \phantom{;} p)
+	a ^ {p-1} \equiv (\bmod \phantom{;} p)
 \]
 
 证明……先等等吧……
