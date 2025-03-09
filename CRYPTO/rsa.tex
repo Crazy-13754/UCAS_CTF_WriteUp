@@ -170,11 +170,11 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 欧几里得算法（或辗转相除法）是得到两数最大公因数的算法，其代码如下：
 
-\lstinputlisting[
-	style   = cpp,
-	caption = {gcd},
-	label   = {gcd.cpp}
-]{contents/gcd.cpp}
+% \lstinputlisting[
+% 	style   = cpp,
+% 	caption = {gcd},
+% 	label   = {gcd.cpp}
+% ]{contents/gcd.cpp}
 
 下证明算法正确性。设$a > b, \phantom{;} c_1 = \gcd(a, \phantom{;} b), \phantom{;} c_2 = \gcd(b, \phantom{;} a \bmod \phantom{;} b)$。此时，$c_2 \mid b$ 且 $c_2 \mid (a \bmod \phantom{;} b)$，又因为$a = k_1b + (a \bmod \phantom{;} b)$，则$c_2 \mid a$，因此 $c_2$ 为 $a, \phantom{;} b$的因数，$c_2$ 因而为 $c_1$的因数。同理，$c_1$ 为 $c_2$的因数，即有$c_1 = c_2$。不断进行此操作，即可得到两数的最大公因数。
 
@@ -219,11 +219,11 @@ RSA加密算法是一种非对称加密算法，在公开密钥加密和电子�
 
 拓展欧几里德算法就是求 $ax + by = c$ 的一组解的方法。由 \ref{裴蜀定理} 节，$c$ 一定是 $\gcd(a, \phantom{;} b)$ 的倍数。此时，重复方程 \ref{裴蜀定理消余数方程组} 的过程即可求 $ax + buy = c$ 的一组解。算法过程如下：
 
-\lstinputlisting[
-	style   = cpp,
-	caption = {exgcd},
-	label   = {exgcd.cpp}
-]{contents/exgcd.cpp}
+% \lstinputlisting[
+% 	style   = cpp,
+% 	caption = {exgcd},
+% 	label   = {exgcd.cpp}
+% ]{contents/exgcd.cpp}
 
 % 考虑通解的情况。若已知解为 $x_1, \phantom{;} y_1$, \phantom{;} 且有 $x_2 = x_1 + k$ 也可以构成解，则有 $a x_2 + a k + b y = c$，即 $a x_2 + b(y + \frac{a}{b} k) = c$。上式中 $k, \phantom{;} \frac{a}{b} k \in \mathbb{Z}$ 才有意义，又有：
 
